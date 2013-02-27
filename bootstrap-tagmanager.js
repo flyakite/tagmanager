@@ -38,6 +38,7 @@
       backspace: [8],
       maxTags: 0,
       hiddenTagListName: null,
+      hiddenTagListID: null,
       deleteTagsOnBackspace: true,
       tagsContainer: null,
       tagCloseIcon: 'x',
@@ -48,6 +49,9 @@
 
     if (tagManagerOptions.hiddenTagListName === null) {
       tagManagerOptions.hiddenTagListName = "hidden-" + this.attr('name');
+    }
+    if (tagManagerOptions.hiddenTagListID === null) {
+      tagManagerOptions.hiddenTagListID = "hidden-" + this.attr('name');
     }
 
     var obj = this;
@@ -302,7 +306,7 @@
       obj.data("tlid", tlid); //list of ID of the string tags
 
       var html = "";
-      html += "<input name='" + tagManagerOptions.hiddenTagListName + "' type='hidden' value=''/>";
+      html += "<input id='" + tagManagerOptions.hiddenTagListID + "' name='" + tagManagerOptions.hiddenTagListName + "' type='hidden' value=''/>";
       obj.after(html);
       obj.data("lhiddenTagList",
          obj.siblings("input[name='" + tagManagerOptions.hiddenTagListName + "']")[0]
